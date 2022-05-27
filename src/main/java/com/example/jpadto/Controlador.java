@@ -23,23 +23,25 @@ public class Controlador {
     }
 
     @PostMapping("/anadirUsuario")
-    public Usuario anadirUsuario(@RequestBody Usuario usuario){
+    public DTOusuario anadirUsuario(@RequestBody DTOusuario DTOusu){
+        Usuario usuario = new Usuario(DTOusu.getId(),DTOusu.getName(),DTOusu.getUsuario());
         usuarioRepositorio.save(usuario);
-        return usuario;
+        return DTOusu;
     }
 
     @GetMapping("getUsuario/{id}")
-    public Usuario getById(@PathVariable String id)throws Exception{
-        return usuarioRepositorio.findById(id).orElseThrow(() -> new Exception("Usuario no encontrado"));
+    public DTOusuario getById(@PathVariable String id)throws Exception{
+        Usuario u = usuarioRepositorio.findById(id).orElseThrow(() -> new Exception("Usuario no encontrado"));
+        return new DTOusuario(u.getId(),u.getName(),u.getUsuario());
     }
 
     @PutMapping("actualizar")
-    public Usuario actualiza(@RequestBody Usuario usuario) throws Exception {
+    public void actualiza(@RequestBody DTOusuario usuario) throws Exception {
         Optional<Usuario> user = usuarioRepositorio.findById(Integer.toString(usuario.getId()));
         if(user.isPresent()){
-            usuarioRepositorio.save(usuario);
+            usuarioRepositorio.save(user.get());
         }
-        return usuarioRepositorio.findById(Integer.toString(usuario.getId())).orElseThrow(() -> new Exception("Usuario no encontrado"));
+        //return usuarioRepositorio.findById(Integer.toString(usuario.getId())).orElseThrow(() -> new Exception("Usuario no encontrado"));
         //return user.get();
     }
 
