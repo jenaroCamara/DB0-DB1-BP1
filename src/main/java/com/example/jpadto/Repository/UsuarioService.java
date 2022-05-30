@@ -1,15 +1,15 @@
-package com.example.jpadto;
+package com.example.jpadto.Repository;
 
+import com.example.jpadto.infraestructure.controller.DTO.DTOusuario;
+import com.example.jpadto.domain.Usuario;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

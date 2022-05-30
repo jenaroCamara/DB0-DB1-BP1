@@ -1,4 +1,4 @@
-package com.example.jpadto;
+package com.example.jpadto.domain;
 
 import com.sun.istack.NotNull;
 import lombok.Data;

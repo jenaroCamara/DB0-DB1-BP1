@@ -1,4 +1,4 @@
-package com.example.jpadto;
+package com.example.jpadto.infraestructure.controller.DTO;
 
 import com.sun.istack.NotNull;
 import lombok.Data;
