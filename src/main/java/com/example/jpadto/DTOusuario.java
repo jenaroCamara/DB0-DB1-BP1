@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
 public class DTOusuario {
     int id;
     String usuario;
@@ -15,16 +14,13 @@ public class DTOusuario {
     String name;
 
     DTOusuario(){}
-    DTOusuario(int id, String usuario, String name){
-        this.id=id; this.usuario=usuario;this.name=name;
-    }
 
-    /*String surname;
+    String surname;
     String company_email;
     String personal_email;
     String city;
     boolean active;
     Date created_date;
     String imagen_url;
-    Date termination_date;*/
+    Date termination_date;
 }

@@ -20,15 +20,9 @@ public class Usuario {
     String usuario;//not null max-length: 10 min-length: 6]
     @NotNull
     String name;
-
-    Usuario(){}
-    Usuario(int id, String usuario, String name){
-     this.id=id; this.usuario=usuario;this.name=name;
-    }
-
-    //@NotNull
-    //String password;
-    /*@NotNull
+    @NotNull
+    String password;
+    @NotNull
     String surname;
     @NotNull
     String company_email;
@@ -42,12 +36,5 @@ public class Usuario {
     Date created_date;
     @NotNull
     String imagen_url;
-    Date termination_date;*/
-
-   /* public Usuario(){}
-    public Usuario(int id, String usuario, String password, String name,String surname,
-                   String company_email, String personal_email, String city,
-                   boolean active, Date created_date, String imagen_url, Date termination_date) {
-
-    }*/
+    Date termination_date;
 }
