@@ -1,7 +1,9 @@
-package com.example.jpadto.Repository;
+package com.example.jpadto.application;
 
-import com.example.jpadto.infraestructure.controller.DTO.DTOusuario;
+import com.example.jpadto.infraestructure.repository.port.UsuarioRepositorio;
+import com.example.jpadto.infraestructure.dto.DTOusuario;
 import com.example.jpadto.domain.Usuario;
+import com.example.jpadto.infraestructure.repository.port.UsuarioServicioInterface;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioService {
+public class UsuarioServicio implements UsuarioServicioInterface {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;

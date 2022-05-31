@@ -1,4 +1,4 @@
-package com.example.jpadto.Config;
+package com.example.jpadto.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

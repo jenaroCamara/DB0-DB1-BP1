@@ -1,4 +1,4 @@
-package com.example.jpadto.infraestructure.controller.DTO;
+package com.example.jpadto.infraestructure.dto;
 
 import com.sun.istack.NotNull;
 import lombok.Data;
@@ -10,11 +10,8 @@ import java.util.Date;
 public class DTOusuario {
     int id;
     String usuario;
-    //String password;
+    String password;
     String name;
-
-    DTOusuario(){}
-
     String surname;
     String company_email;
     String personal_email;
