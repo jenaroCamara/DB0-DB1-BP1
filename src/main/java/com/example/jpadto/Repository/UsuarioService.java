@@ -37,7 +37,7 @@ public class UsuarioService {
         return ListaDTOs;
     }
 
-    public List<DTOusuario> getUsuariosByName(@PathVariable String nombre){
+    public List<DTOusuario> getUsuariosByName(@PathVariable String nombre) {
         List<Usuario> lista = usuarioRepositorio.findByName(nombre);
         return lista.stream()
                 .map(Usuario -> modelMapper.map(Usuario, DTOusuario.class))
@@ -54,14 +54,17 @@ public class UsuarioService {
     }
 
     public void actualiza(@RequestBody DTOusuario usuario) throws Exception {
-        Usuario user = usuarioRepositorio.findById(usuario.getId()).orElseThrow(() -> new Exception("Usuario no encontrado"));
-        usuarioRepositorio.save(modelMapper.map(usuario, Usuario.class));
+            Usuario user = usuarioRepositorio.findById(usuario.getId()).orElseThrow(() -> new Exception("Usuario no encontrado"));
+            usuarioRepositorio.save(modelMapper.map(usuario, Usuario.class));
     }
 
-    public void deleteById(String id) {
-        if (usuarioRepositorio.findById(Integer.parseInt(id)).isPresent()) {
-            usuarioRepositorio.deleteById(Integer.parseInt(id));
+    public void deleteById(String id) throws Exception {
+        try {
+            if (usuarioRepositorio.findById(Integer.parseInt(id)).isPresent()) {
+                usuarioRepositorio.deleteById(Integer.parseInt(id));
+            }
+        } catch (Exception e) {
+            throw new Exception("Usuario no encontrado");
         }
     }
-
 }

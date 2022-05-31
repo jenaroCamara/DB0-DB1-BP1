@@ -29,7 +29,7 @@ public class Controlador {
     }
 
     @DeleteMapping("delete/{id}")
-    public void deleteById(@PathVariable String id){
+    public void deleteById(@PathVariable String id) throws Exception {
         usuarioService.deleteById(id);
     }
 
