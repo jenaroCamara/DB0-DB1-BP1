@@ -1,9 +1,8 @@
 package com.example.jpadto.application;
 
-import com.example.jpadto.infraestructure.repository.port.UsuarioRepositorio;
 import com.example.jpadto.infraestructure.dto.DTOusuario;
 import com.example.jpadto.domain.Usuario;
-import com.example.jpadto.infraestructure.repository.port.UsuarioServicioInterface;
+import com.example.jpadto.infraestructure.repository.UsuarioServicioInterface;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ public class UsuarioServicio implements UsuarioServicioInterface {
     public Usuario guardar(Usuario usuario) throws Exception {
         String auxName = usuario.getUsuario();
         if (auxName.length() < 6 || auxName.length() > 16) {
-            throw new Exception();
+            throw new Exception("Cliente no valido");
         }
         return usuarioRepositorio.save(usuario);
     }
@@ -55,9 +54,10 @@ public class UsuarioServicio implements UsuarioServicioInterface {
         }
     }
 
-    public void actualiza(@RequestBody DTOusuario usuario) throws Exception {
-            Usuario user = usuarioRepositorio.findById(usuario.getId()).orElseThrow(() -> new Exception("Usuario no encontrado"));
-            usuarioRepositorio.save(modelMapper.map(usuario, Usuario.class));
+    public DTOusuario actualiza(@RequestBody DTOusuario usuario) throws Exception {
+        Usuario user = usuarioRepositorio.findById(usuario.getId()).orElseThrow(() -> new Exception("Usuario no encontrado"));
+        usuarioRepositorio.save(modelMapper.map(usuario, Usuario.class));
+        return usuario;
     }
 
     public void deleteById(String id) throws Exception {

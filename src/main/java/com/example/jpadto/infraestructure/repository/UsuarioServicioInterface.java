@@ -1,4 +1,4 @@
-package com.example.jpadto.infraestructure.repository.port;
+package com.example.jpadto.infraestructure.repository;
 
 import com.example.jpadto.domain.Usuario;
 import com.example.jpadto.infraestructure.dto.DTOusuario;
@@ -14,6 +14,6 @@ public interface UsuarioServicioInterface {
     public List<DTOusuario> getUsuarios();
     public List<DTOusuario> getUsuariosByName(@PathVariable String nombre);
     public DTOusuario getUserById(String id) throws Exception ;
-    public void actualiza(@RequestBody DTOusuario usuario) throws Exception;
+    public DTOusuario actualiza(@RequestBody DTOusuario usuario) throws Exception;
     public void deleteById(String id) throws Exception;
 }

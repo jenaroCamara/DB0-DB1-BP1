@@ -1,7 +1,7 @@
 package com.example.jpadto.infraestructure.controller;
 
 import com.example.jpadto.infraestructure.dto.DTOusuario;
-import com.example.jpadto.infraestructure.repository.port.UsuarioServicioInterface;
+import com.example.jpadto.infraestructure.repository.UsuarioServicioInterface;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
