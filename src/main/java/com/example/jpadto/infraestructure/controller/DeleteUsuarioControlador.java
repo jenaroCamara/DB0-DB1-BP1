@@ -17,9 +17,9 @@ public class DeleteUsuarioControlador {
     public ResponseEntity deleteById(@PathVariable String id) throws Exception {
         try{
             usuarioServicio.deleteById(id);
-            return ResponseEntity.status(HttpStatus.CREATED).body("");
+            return ResponseEntity.status(HttpStatus.OK).body("");
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
