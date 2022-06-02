@@ -24,7 +24,6 @@ public class DTOusuario {
     String personal_email;
     @NotBlank(message = "city No puede estar vacio")
     String city;
-    @NotBlank(message = "active No puede estar vacio")
     boolean active;
     Date created_date;
     @NotBlank(message = "imagen-url No puede estar vacio")

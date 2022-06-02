@@ -2,6 +2,7 @@ package com.example.jpadto.infraestructure.controller;
 
 import com.example.jpadto.exceptions.BeanNotFoundException;
 import com.example.jpadto.domain.CustomError;
+import com.example.jpadto.exceptions.UnprocesableException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,7 +20,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity<CustomError>(exceptionResponse, HttpStatus.NOT_ACCEPTABLE);
     }
 
-    @ExceptionHandler(BeanNotFoundException.class)
+    @ExceptionHandler(UnprocesableException.class)
     public final ResponseEntity<CustomError> handleUnprocesableException(BeanNotFoundException ex, WebRequest request) {
         CustomError exceptionResponse = new CustomError(new Date(), "Error ", HttpStatus.NOT_ACCEPTABLE.value());
         return new ResponseEntity<CustomError>(exceptionResponse, HttpStatus.NOT_ACCEPTABLE);
