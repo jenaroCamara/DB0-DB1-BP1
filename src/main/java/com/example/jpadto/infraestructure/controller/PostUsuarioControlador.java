@@ -26,12 +26,8 @@ public class PostUsuarioControlador {
 
     @PostMapping("/anadirUsuario")//Dejo esta función así, hasta ver si las validation van en dto o en las entidades
     public ResponseEntity<DTOusuario> anadirUsuario(@RequestBody @Valid DTOusuario DTOusu) throws Exception {
-        try{
             Usuario user = usuarioServicio.guardar(modelMapper.map(DTOusu, Usuario.class));
             return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(user, DTOusuario.class));
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
-        }
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
