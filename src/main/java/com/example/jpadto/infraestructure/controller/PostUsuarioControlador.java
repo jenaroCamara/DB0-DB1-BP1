@@ -7,9 +7,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/Post")
@@ -20,14 +24,27 @@ public class PostUsuarioControlador {
     @Autowired
     private ModelMapper modelMapper;
 
-    @PostMapping("/anadirUsuario")
-    public ResponseEntity<DTOusuario> anadirUsuario(@RequestBody @Valid DTOusuario DTOusu) throws Exception{
+    @PostMapping("/anadirUsuario")//Dejo esta función así, hasta ver si las validation van en dto o en las entidades
+    public ResponseEntity<DTOusuario> anadirUsuario(@RequestBody @Valid DTOusuario DTOusu) throws Exception {
         try{
-            Usuario user  = usuarioServicio.guardar(modelMapper.map(DTOusu, Usuario.class));
-            return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(user,DTOusuario.class));
+            Usuario user = usuarioServicio.guardar(modelMapper.map(DTOusu, Usuario.class));
+            return ResponseEntity.status(HttpStatus.CREATED).body(modelMapper.map(user, DTOusuario.class));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
         }
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 
 }

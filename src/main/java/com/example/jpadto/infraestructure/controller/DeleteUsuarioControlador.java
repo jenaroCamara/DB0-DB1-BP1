@@ -19,7 +19,7 @@ public class DeleteUsuarioControlador {
             usuarioServicio.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).body("");
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
         }
     }
 

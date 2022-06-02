@@ -1,4 +1,4 @@
-table Persona{
+table Usuario{
 id_persona int [pk, increment],
 usuario string [not null max-length: 10 min-length: 6],
 password string [not null],

@@ -23,7 +23,6 @@ public class GetUsuarioControlador {
     public ResponseEntity<DTOusuario> getById(@PathVariable(value="id" ) String id)throws Exception{
         try{
             return ResponseEntity.status(HttpStatus.OK).body(usuarioServicio.getUserById(id));
-            //return usuarioServicio.getUserById(id);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

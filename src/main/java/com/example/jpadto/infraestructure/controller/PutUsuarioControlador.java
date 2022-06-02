@@ -21,9 +21,9 @@ public class PutUsuarioControlador {
     @PutMapping("actualizar")
     public ResponseEntity<DTOusuario> actualiza(@RequestBody DTOusuario usuario) throws Exception {
         try{
-            return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+            return ResponseEntity.status(HttpStatus.CREATED).body(usuarioServicio.actualiza(usuario));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
         }
     }
 }

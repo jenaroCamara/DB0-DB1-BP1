@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Data
@@ -16,25 +17,23 @@ public class Usuario {
     @Id
     @GeneratedValue
     int id;
-    @NotNull
+    @NotBlank(message = "No puede estar vacio")
     String usuario;//not null max-length: 10 min-length: 6]
-    @NotNull
+    @NotBlank(message = "No puede estar vacio")
     String name;
-    @NotNull
+    @NotBlank(message = "No puede estar vacio")
     String password;
-    @NotNull
+    @NotBlank(message = "No puede estar vacio")
     String surname;
-    @NotNull
+    @NotBlank(message = "No puede estar vacio")
     String company_email;
-    @NotNull
+    @NotBlank(message = "No puede estar vacio")
     String personal_email;
-    @NotNull
+    @NotBlank(message = "No puede estar vacio")
     String city;
-    @NotNull
     boolean active;
-    @NotNull
     Date created_date;
-    @NotNull
+    @NotBlank(message = "No puede estar vacio")
     String imagen_url;
     Date termination_date;
 }
